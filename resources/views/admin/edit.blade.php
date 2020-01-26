@@ -46,30 +46,11 @@ active
         </div>
         <ul class="nav nav-tabs m-b-n-xxs bg-light">
             <li class="active">
-                <a href="#activities" data-toggle="tab" class="m-l">Activities<span class="badge bg-primary badge-sm m-l-xs">{{sizeof($user->transaction)}}</span></a>
-            </li>
-            <li>
-                <a href="#edit" data-toggle="tab">Account Transaction</a>
+                <a href="#edit" data-toggle="tab" class="m-l">Account Transaction</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div class="panel tatransactionb-pane active " id="activities">
-                @if(sizeof($user->transaction) > 0)
-                    <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border" >
-                        <li class="list-group-item">
-                            <a href="#" class="thumb-sm pull-left m-r-sm">
-                            <img src="images/a0.png" class="img-circle">
-                            </a>
-                            <a href="#" class="clear">
-                            <small class="pull-right">3 minuts ago</small>
-                            <strong class="block">Drew Wllon</strong>
-                            <small>Wellcome and play this web application template ... </small>
-                            </a>
-                        </li>
-                    </ul>
-                @endif
-            </div>
-            <div class="tab-pane wrapper-lg" id="edit">
+            <div class="panel tab-pane wrapper-lg active" id="edit">
                 <form class="form-horizontal" action="{{route('admin.update.account', $user->id)}}" method="post">
                     {{csrf_field()}}
                 <div class="form-group">
