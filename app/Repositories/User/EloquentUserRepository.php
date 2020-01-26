@@ -25,7 +25,7 @@ class EloquentUserRepository implements UserContract{
             $user = Sentinel::registerAndActivate($credentials);
             $role = Sentinel::findRoleBySlug($role);
             $role->users()->attach($user);
-            //$this->sendEmail($credentials);
+            $this->sendEmail($credentials);
             if($role->name == 'user') {
                 $nUser = $user->toArray();
                 $nUser['request'] = $request;
@@ -65,21 +65,18 @@ class EloquentUserRepository implements UserContract{
             ->first();
     }
 
+    public function updatePassword($request) {
+        $user = Sentinel::getUser();
+        $credentials = [
+            'password' => $request->new_password,
+        ];
+        return Sentinel::update($user, $credentials);
+    }
+
     public function modifyTransfer($request){
         $account = $this->findById($request->id);
         $account->status = $account->status == 'active' ? 'disabled' : 'active';
         return $account->save();
-    }
-
-    public function updatePassword($request, $slug) {
-        $credentials = [
-            'password' => $request->password,
-            'update_password' => 1
-        ];
-        $user = $this->findBySlug($slug);
-        $user->update_password = 1;
-        Sentinel::update($user, $credentials);
-        return $user;
     }
 
     public function generateToken() {
@@ -107,7 +104,7 @@ class EloquentUserRepository implements UserContract{
                 'surname' => $request['surname']
             );
              Mail::send('emails.emailTemplate', $data,  function($message) use ($data) {
-                $message->from('hello@e-thrift.com', "Admin");
+                $message->from('hello@tymebrokers.com', "Admin");
                 $message->to($data['email']);
                 $message->subject("e-Thrift Account details");
             });
@@ -122,16 +119,15 @@ class EloquentUserRepository implements UserContract{
         try {
             $data = array(
                 'email' => $request['email'],
-                'otp' => $request['otp'],
+                'token' => $request['otp'],
                 'surname' => $request['surname']
             );
-             Mail::send('emails.emailTemplate', $data,  function($message) use ($data) {
-                $message->from('hello@e-thrift.com', "Admin");
+             Mail::send('emails.emailtoken', $data,  function($message) use ($data) {
+                $message->from('hello@tymebrokers.com', "Admin");
                 $message->to($data['email']);
                 $message->subject("One Time Password");
             });
             return Mail::failures() ? false : true;
-
         }
         catch (\Exception $ex) {
             return $ex;

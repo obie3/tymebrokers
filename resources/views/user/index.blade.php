@@ -28,40 +28,23 @@ active
                     <li class="bg-light dk"><a href="#"><i class="i i-phone m-r-sm"></i>{{$user->phone_number}}</a></li>
                     <li class="bg-light dk"><a href="#"><i class="i i-mail m-r-sm"></i> {{$user->email}}</a></li>
                     <li class="bg-light dk"><a href="#"><i class="i i-chat m-r-sm"></i>{{$user->address}}</a></li>
+                    <li style="color:blue" class="bg-light dk "><a href="#"><i class="i i-mail m-r-sm"></i>{{$user->status}}</a></li>
+
                 </ul>
                 </aside>
             </div>
         </div>
         <ul class="nav nav-tabs m-b-n-xxs bg-light">
+
             <li class="active">
-                <a href="#activities" data-toggle="tab" class="m-l">Activities<span class="badge bg-primary badge-sm m-l-xs">{{sizeof($user->transaction)}}</span></a>
-            </li>
-            <li>
-                <a href="#edit" data-toggle="tab">Deposit</a>
+                <a href="#edit" data-toggle="tab" class="m-l">Deposit</a>
             </li>
             <li>
                 <a href="#transfer" data-toggle="tab">Transfer</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div class="panel tatransactionb-pane active " id="activities">
-                @if(sizeof($user->transaction) > 0)
-                    <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border" >
-                        <li class="list-group-item">
-                            <a href="#" class="thumb-sm pull-left m-r-sm">
-                            <img src="images/a0.png" class="img-circle">
-                            </a>
-                            <a href="#" class="clear">
-                            <small class="pull-right">3 minuts ago</small>
-                            <strong class="block">Drew Wllon</strong>
-                            <small>Wellcome and play this web application template ... </small>
-                            </a>
-                        </li>
-                    </ul>
-                @endif
-            </div>
-
-            <div class="tab-pane wrapper-lg" id="edit">
+            <div class="tab-pane wrapper-lg active" id="edit">
                 <form class="form-horizontal" action="{{route('user.update.account', $user->id)}}" method="post">
                     {{csrf_field()}}
                 <div class="form-group">
@@ -111,7 +94,7 @@ active
                     <label class="col-sm-3 control-label">OTP:</label>
                     <div class="col-sm-5">
                         <input type="text" name="otp" class="form-control">
-                        <input type="hidden" name="type" value="{{'transferrrrr'}}" class="form-control">
+                        <input type="hidden" name="type" value="{{'transfer'}}" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -125,7 +108,7 @@ active
 
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-5">
-                            <button type="submit" id="otpBtn" class="btn btn-sm btn-danger">Request OTP</button>
+                            <button type="submit" id="otpBtn" class="btn btn-sm btn-success">Request OTP</button>
                         </div>
                     </div>
                 </form>

@@ -3,6 +3,7 @@ namespace App\Repositories\Debit;
 
 use Session;
 use Mail;
+use Sentinel;
 use App\Debit;
 use App\Repositories\Debit\DebitContract;
 
@@ -14,25 +15,21 @@ class EloquentDebitRepository implements DebitContract{
     }
 
     public function findById($id) {
-        return Debit::where('user_id', $id)->first();
+        return Debit::where('user_id', $id)->get();
     }
 
-    // public function updateAccountBalance($request){
-    //     $account = $this->findById($request->id);
-    //     $account->account_balance = intval(str_replace( ',', '', $account->account_balance)) + intval($request->amount);
-    //     return $account->save();
-    // }
-
     public function findAll() {
-        return Debit::all();
+        return Debit::with('user')->get();
     }
 
     private function setDebitProperties($debit, $request) {
         $debit->amount = $request->amount;
         $debit->narration = $request->narration;
         $debit->recipient = $request->recipient;
-        $debit->recipient_id = $request->recipient;
-        $debit->user_id = $request->user_id;
+        $debit->recipient_id = $request->recipient_id;
+        $debit->recipient_name = $request->recipient_name;
+        $debit->recipient_phone_number = $request->recipient_phone_number;
+        $debit->user_id = $request->id;
     }
 }
 

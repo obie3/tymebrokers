@@ -15,15 +15,14 @@ class CreateCreditsTable extends Migration
     {
         Schema::create('credits', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('amount');
+            $table->decimal('amount', 14,2);
             $table->string('narration')->nullable();
             $table->string('type');
-             $table->bigInteger('depositor_id')->unsigned()->nullable();
-            $table->foreign('depositor_id')->references('id')->on('users');
+            $table->bigInteger('depositor_id')->unsigned()->nullable();
+            $table->string('depositor_name')->nullable();
+            $table->string('depositor_phone_number')->nullable();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('sender_id')->unsigned()->nullable();
-            $table->foreign('sender_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

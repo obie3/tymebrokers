@@ -15,11 +15,12 @@ class CreateDebitsTable extends Migration
     {
         Schema::create('debits', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('amount');
+            $table->decimal('amount', 14,2);
             $table->string('narration')->nullable();
             $table->string('recipient')->nullable();
             $table->bigInteger('recipient_id')->unsigned()->nullable();
-            $table->foreign('recipient_id')->references('id')->on('users');
+            $table->string('recipient_name')->nullable();
+            $table->string('recipient_phone_number')->nullable();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

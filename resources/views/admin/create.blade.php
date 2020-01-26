@@ -15,7 +15,7 @@ active
                     <div class="form-group {{ $errors->has('surname') ? ' is-invalid' : '' }}">
                         <label class="col-lg-2 control-label">Surname</label>
                         <div class="col-lg-10">
-                            <input type="text" id="surname" name="surname"  data-required="true" class="form-control">
+                            <input type="text" id="surname" name="surname" value="{{ old('surname') }}"  data-required="true" class="form-control">
                             @if ($errors->has('surname'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('surname') }}</strong>
@@ -26,7 +26,7 @@ active
                     <div class="form-group {{ $errors->has('other_names') ? ' is-invalid' : '' }}">
                         <label class="col-lg-2 control-label">Other Names</label>
                         <div class="col-lg-10">
-                            <input type="text" id="othernames" name="other_names" data-required="true"  class="form-control">
+                            <input type="text" id="othernames" name="other_names" value="{{ old('other_names') }}"data-required="true"  class="form-control">
                             @if ($errors->has('other_names'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('other_names') }}</strong>
@@ -38,7 +38,7 @@ active
                     <div class="form-group {{ $errors->has('email') ? ' is-invalid' : '' }}">
                         <label class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-10">
-                            <input type="email" id="email" name="email" data-required="true" class="form-control">
+                            <input type="email" id="email" name="email" value="{{ old('email') }}" data-required="true" class="form-control">
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('email') }}</strong>
@@ -50,7 +50,7 @@ active
                     <div class="form-group {{ $errors->has('phone_number') ? ' is-invalid' : '' }}">
                         <label class="col-lg-2 control-label">Phone Number</label>
                         <div class="col-lg-10">
-                            <input type="text" id="phone_number" name="phone_number" data-required="true" class="form-control">
+                            <input type="text" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" data-required="true" class="form-control">
                             @if ($errors->has('phone_number'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('phone_number') }}</strong>
@@ -62,7 +62,7 @@ active
                     <div class="form-group {{ $errors->has('address') ? ' is-invalid' : '' }}">
                         <label class="col-lg-2 control-label">Address</label>
                         <div class="col-lg-10">
-                            <textarea type="text" id="phone_number" name="address" data-required="true" class="form-control"> </textarea>
+                            <textarea type="text" id="address" name="address" value="{{ old('address') }}" data-required="true" class="form-control"> {{ old('address') }}</textarea>
                             @if ($errors->has('address'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('address') }}</strong>

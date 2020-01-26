@@ -17,7 +17,7 @@ class CreateAccountBalancesTable extends Migration
             $table->bigIncrements('id');
             $table->string('email');
             $table->string('account_name');
-            $table->decimal('account_balance')->default(0.0);
+            $table->decimal('account_balance', 14,2)->default(0.0);
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

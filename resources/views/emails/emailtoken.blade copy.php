@@ -100,7 +100,7 @@
       padding-top: 5px;
       color: #000000;
       font-family: sans-serif;" class="subheader">
-        {{ $phone }}
+        {{ One Time Password }}
     </td>
   </tr>
 
@@ -110,14 +110,14 @@
     <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
       padding-top: 20px;" class="hero">
       <a target="_blank" style="text-decoration: none;"
-      href="https://www.tymebrokers.com">
-      <img border="0" vspace="0" hspace="0"
-      src="https://cdn.gobankingrates.com/wp-content/uploads/2015/11/why_banks_wont_increase_savings_account_rates.jpg"
-      alt="Please enable images to view this content" title="Logo"
-      width="150" style="
-      width: 30%;
-      max-width: 560px;
-      color: #000000; font-size: 13px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;"/>
+        href="https://www.tymebrokers.com">
+        <img border="0" vspace="0" hspace="0"
+        src="https://cdn.gobankingrates.com/wp-content/uploads/2015/11/why_banks_wont_increase_savings_account_rates.jpg"
+        alt="Please enable images to view this content" title="Logo"
+        width="150" style="
+        width: 30%;
+        max-width: 560px;
+        color: #000000; font-size: 13px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;"/>
     </a></td>
   </tr>
 
@@ -129,25 +129,11 @@
         <p>
           Hi {{ $surname }},
         </p>
-
         <p>
-          Please find below your Tymebrokers account details.
-        </p>
-
-        <p>
-          <strong>username</strong> {{ $email }} <br />
+          <strong>Token</strong> {{ $token }} <br />
         </p>
         <p>
-          <strong>Password:</strong> {{ $password }} <br />
-        </p>
-        <p>
-          <strong>Unique Id:</strong> {{ $account_number }} <br />
-        </p>
-        <p>
-          <strong>Current Balance:</strong> {{ '0.0 NGN' }} <br />
-        </p>
-        <p>
-          Use the above credentials to log into the portal
+          Use the token above to complete the transaction.
         </p>
 
         <p>Cheers</p>
@@ -172,7 +158,7 @@
       padding-bottom: 25px;
       color: #000000;
       font-family: sans-serif;" class="paragraph">
-        Have a&nbsp;question? <a href="mailto:info@tymebrokers.com" target="_blank" style="color: #127DB3; font-family: sans-serif; font-size: 17px; font-weight: 400; line-height: 160%;">info@tymebrokers.com</a>
+        Have a&nbsp;question? <a href="mailto:info@admin@tymebrokers.com" target="_blank" style="color: #127DB3; font-family: sans-serif; font-size: 17px; font-weight: 400; line-height: 160%;">info@e-tymebrokers.com</a>
     </td>
   </tr>
 

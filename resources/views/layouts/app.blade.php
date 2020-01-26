@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="app">
     <head>
         <meta charset="utf-8" />
-        <title>{{ 'e-Thrift' }}</title>
-        <meta name="description" content="e-Thrift Services" />
+        <title>{{ 'Tymebrokers' }}</title>
+        <meta name="description" content="Tymebrokers Services" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link rel="shortcut icon" href=" {{ url('/favicon.ico') }}" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -36,7 +36,7 @@
         </a>
         <a href="/" class="navbar-brand">
           <img src="{{ url('/images/logo.png') }}" class="m-r-sm" alt="scale">
-          <span class="hidden-nav-xs">e-THRIFT</span>
+          <span class="hidden-nav-xs">Tymebrokers</span>
         </a>
         <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
           <i class="fa fa-cog"></i>
@@ -95,8 +95,12 @@
                   <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Pre Bidding Excercise</div>
                   <ul class="nav nav-main" data-ride="collapse">
                     <li  class="@yield('dashboard')">
-                      <a href="" class="auto">
-                        <i class="i i-statistics icon">
+                      <a href="{{route('user.index')}}" class="auto">
+                      <span class="pull-right text-muted">
+                          <i class="i i-circle-sm-o text"></i>
+                          <i class="i i-circle-sm text-active"></i>
+                        </span>
+                        <i class="i i-lab icon">
                         </i>
                         <span class="font-bold">Dashboard</span>
                       </a>
@@ -114,17 +118,30 @@
                       </a>
                     </li>
                     <li class="@yield('transactions')" >
-                      <a href="#" class="auto">
-                        <span class="pull-right text-muted">
-                          <i class="i i-circle-sm-o text"></i>
-                          <i class="i i-circle-sm text-active"></i>
-                        </span>
-                        <i class="i i-lab icon">
-                        </i>
-                        <span class="font-bold">Transactions</span>
-                      </a>
+                        <a href="#" class="auto">
+                            <span class="pull-right text-muted">
+                            <i class="i i-circle-sm-o text"></i>
+                            <i class="i i-circle-sm text-active"></i>
+                            </span>
+                            <i class="i i-lab icon">
+                            </i>
+                            <span class="font-bold">Transactions</span>
+                        </a>
+                        <ul class="nav dk">
+                            <li >
+                                <a href="{{ route('user.credits') }}" class="auto">
+                                    <i class="i i-dot @yield('tools')"></i>
+                                    <span>Credits</span>
+                                </a>
+                            </li>
+                            <li >
+                                <a href="{{ route('user.debits') }}" class="auto">
+                                    <i class="i i-dot @yield('tools')"></i>
+                                    <span>Debits</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-
                     <li >
                       <a href="{{route('auth.logout')}}" class="auto">
                         <span class="pull-right text-muted">

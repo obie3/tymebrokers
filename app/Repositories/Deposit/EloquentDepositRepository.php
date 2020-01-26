@@ -16,7 +16,7 @@ class EloquentDepositRepository implements DepositContract{
     }
 
     public function findById($id) {
-        return Credit::where('user_id', $id)->first();
+        return Credit::where('user_id', $id)->get();
     }
 
     public function updateAccountBalance($request){
@@ -26,17 +26,19 @@ class EloquentDepositRepository implements DepositContract{
     }
 
     public function findAll() {
-        return Credit::all();
+        return Credit::with('user')->get();
     }
 
     private function setDepositProperties($credit, $request) {
         //type = transfer or deposit
+        $user = Sentinel::getUser();
         $credit->amount = $request->amount;
         $credit->narration = $request->narration;
         $credit->type = isset($request->type) ? $request->type : 'Deposit';
         $credit->user_id = $request->account_id; //id of the user to be credited
-        $credit->sender_id = Sentinel::getUser()->id;
-        $credit->depositor_id = Sentinel::getUser()->id;
+        $credit->depositor_id = $user->id;
+        $credit->depositor_name = $user->surname.' '.$user->other_names;
+        $credit->depositor_phone_number = $user->phone_number;
     }
 }
 

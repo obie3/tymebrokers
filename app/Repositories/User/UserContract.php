@@ -9,6 +9,7 @@ interface UserContract {
     public function modifyTransfer($request);
     public function findUserByAccountStatus($status);
     public function findRecipient($param);
+    public function updatePassword($request);
    // public function updateAccountBalance($request);
     // public function getCompanyById();
     // public function editPassword($request);

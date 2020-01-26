@@ -15,6 +15,7 @@ class LoginController extends Controller
 
     public function index() {
         if(Sentinel::check()) {
+            toastr()->error('Invalid Username or Password', 'Attention..' );
             $userRole = Sentinel::getUser()->roles()->first()->slug;
             if($userRole === 'admin') {
                 return redirect()->route('admin.index');
@@ -44,7 +45,7 @@ class LoginController extends Controller
                     return redirect()->route('user.index');
                 }
             } else {
-                toastr()->error('Invalid Username or Password', 'Hello..' );
+                toastr()->error('Invalid Username or Password', 'Attention..' );
                 return redirect()->back()->withInput();
             }
         } catch(ThrottlingException $e) {

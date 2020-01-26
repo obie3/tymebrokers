@@ -16,6 +16,7 @@ active
                                 <small>Welcome back, {{Sentinel::getUser()->surname}} </small>
                             </div>
                         </section>
+                        <?php //dd($totalDebits); ?>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="panel b-a">
@@ -51,7 +52,7 @@ active
                                             </a>
                                         </div> -->
                                         <div class="col-md-6 b-b b-r">
-                                            <a href="#" class="block padder-v hover">
+                                            <a href="{{route('admin.disabled.accounts')}}" class="block padder-v hover">
                                                 <span class="i-s i-s-2x pull-left m-r-sm">
                                                     <i class="i i-hexagon2 i-s-base text-danger hover-rotate"></i>
                                                     <i class="i i-plus2 i-1x text-white"></i>
@@ -63,7 +64,7 @@ active
                                             </a>
                                         </div>
                                         <div class="col-md-6 b-b">
-                                            <a href="#" class="block padder-v hover">
+                                            <a href="{{route('admin.active.accounts')}}" class="block padder-v hover">
                                                 <span class="i-s i-s-2x pull-left m-r-sm">
                                                     <i class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i>
                                                     <i class="i i-users2 i-sm text-white"></i>
@@ -77,7 +78,7 @@ active
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-6 col-sm-6">
                                 <div class="panel b-a">
                                 <div class="panel-heading no-border bg-primary lt text-center">
                                     <a href="#">
@@ -86,13 +87,13 @@ active
                                 </div>
                                 <div class="padder-v text-center clearfix">
                                     <div class="col-xs-12 b-r">
-                                    <div class="h3 font-bold">{{number_format($accountTotal, 2)}}</div>
-                                    <small class="text-muted">Total Transactions</small>
+                                    <div class="h3 font-bold">{{number_format($accountTotal, 2)}} NGN</div>
+                                    <small class="text-muted">Total Balance</small>
                                     </div>
                                 </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <!-- <div class="col-md-3 col-sm-6">
                                 <div class="panel b-a">
                                 <div class="panel-heading no-border bg-info lter text-center">
                                     <a href="#">
@@ -110,7 +111,7 @@ active
                                     </div>
                                 </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-sm-3 hide">
                                 <section class="panel b-a">
                                 <header class="panel-heading b-b b-light">

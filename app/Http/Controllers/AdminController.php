@@ -6,19 +6,25 @@ use Illuminate\Http\Request;
 use App\Repositories\User\UserContract;
 use App\Repositories\AccountBalance\AccountBalanceContract;
 use App\Repositories\Deposit\DepositContract;
+use App\Repositories\Debit\DebitContract;
+
 
 class AdminController extends Controller
 {
     protected $userModel;
     protected $accountBalanceModel;
     protected $creditModel;
+    protected $debitModel;
     public function __construct(UserContract $userContract,
         AccountBalanceContract $accountBalanceContract,
-        DepositContract $depositContract){
+        DepositContract $depositContract,
+        DebitContract $debitContract ){
         $this->middleware('admin');
         $this->userModel = $userContract;
         $this->accountBalanceModel = $accountBalanceContract;
         $this->creditModel = $depositContract;
+        $this->debitModel = $depositContract;
+
     }
 
     public function index(){
@@ -27,10 +33,12 @@ class AdminController extends Controller
         $activeTransfers = $this->userModel->findUserByAccountStatus('active');
         $disabledTransfers = $this->userModel->findUserByAccountStatus('disabled');
         $balanceTotal = $this->accountBalanceModel->findAll();
+        $totalDebit = $this->debitModel->findAll();
         return view('admin.index')->with(['users' => $users->count(),
             'activeAccounts' => $activeTransfers->count(),
             'disabledAccounts' => $disabledTransfers->count(),
-            'accountTotal' => $balanceTotal->sum('account_balance')]);
+            'accountTotal' => $balanceTotal->sum('account_balance'),
+            'totalDebits' => $totalDebit->sum('amount')]);
     }
 
     public function create(){
@@ -41,8 +49,8 @@ class AdminController extends Controller
         $this->validate($request, [
             'surname' => 'required',
             'other_names' => 'required',
-            'email' => 'required|email',
-            'phone_number' => 'required|numeric',
+            'email' => 'required|email|unique:users',
+            'phone_number' => 'required|numeric|unique:users',
             'address' => 'required',
             'user_type' => 'required'
         ]);
@@ -53,11 +61,22 @@ class AdminController extends Controller
                 return redirect()->back();
             }
             toastr()->error('Oops error encountered please try again', 'Hello... ');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }catch (\QueryException $ex) {
             toastr()->success($ex, 'Hello... ');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
+    }
+
+    public function activeAccounts(){
+        $activeTransfers = $this->userModel->findUserByAccountStatus('active');
+        return view('admin.active')->with(['users' => $activeTransfers]);
+    }
+
+    public function disabledAccounts() {
+        $disabledTransfers = $this->userModel->findUserByAccountStatus('disabled');
+        return view('admin.disabled')->with(['users' => $disabledTransfers]);
+
     }
 
     public function edit($id) {
@@ -74,26 +93,31 @@ class AdminController extends Controller
         return view('admin.changepassword');
     }
 
-    public function updatePassword() {
+    public function updatePassword(Request $request) {
         $this->validate($request, [
-            'password' => 'required',
             'new_password' => 'required',
             'confirm_password' => 'required',
         ]);
-        try {
-            $user = $this->userModel->create($request);
-            if ($user) {
-                toastr()->success('User created Successfully', 'Hello... ');
+        if(strcmp($request->new_password, $request->confirm_password) == 0) {
+            try {
+                $user = $this->userModel->updatePassword($request);
+                if ($user) {
+                    toastr()->success('Password Update Successful', 'Hello... ');
+                    return redirect()->back();
+                }
+                toastr()->error('Oops error encountered please try again', 'Hello... ');
+                return redirect()->back();
+            }catch (\Exception $ex) {
+                toastr()->error($ex, 'Attention... ');
                 return redirect()->back();
             }
-            toastr()->error('Oops error encountered please try again', 'Hello... ');
-            return redirect()->back();
-        }catch (\QueryException $ex) {
-            toastr()->error($ex, 'Hello... ');
-            return redirect()->back();
-        }
-    }
+        }else {
+            toastr()->error('Password donot match', 'Attention.. ');
+            return redirect()->back()->withInput();
 
+        }
+
+    }
 
     public function deposit(Request $request, $id) {
         $user = $this->userModel->findById($request->id);

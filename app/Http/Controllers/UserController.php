@@ -7,8 +7,6 @@ use App\Repositories\AccountBalance\AccountBalanceContract;
 use App\Repositories\Deposit\DepositContract;
 use App\Repositories\Debit\DebitContract;
 
-
-
 class UserController extends Controller
 {
     protected $userModel;
@@ -25,12 +23,9 @@ class UserController extends Controller
         $this->accountBalanceModel = $accountBalanceContract;
         $this->creditModel = $depositContract;
         $this->debitModel = $debitContract;
-
-
     }
 
     public function index(){
-       // toastr()->info('Hello... ', 'Welcome Back');
         $user = $this->userModel->findById(Sentinel::getUser()->id);
         return view('user/index')->with('user', $user);
     }
@@ -63,23 +58,27 @@ class UserController extends Controller
         return view('user.changepassword');
     }
 
-    public function updatePassword() {
+    public function updatePassword(Request $request) {
         $this->validate($request, [
-            'password' => 'required',
             'new_password' => 'required',
             'confirm_password' => 'required',
         ]);
-        try {
-            $user = $this->userModel->create($request);
-            if ($user) {
-                toastr()->success('User created Successfully', 'Hello... ');
+        if(strcmp($request->new_password, $request->confirm_password) == 0) {
+            try {
+                $user = $this->userModel->updatePassword($request);
+                if ($user) {
+                    toastr()->success('Password Update Successful', 'Hello... ');
+                    return redirect()->back();
+                }
+                toastr()->error('Oops error encountered please try again', 'Hello... ');
+                return redirect()->back();
+            }catch (\Exception $ex) {
+                toastr()->error($ex, 'Attention... ');
                 return redirect()->back();
             }
-            toastr()->error('Oops error encountered please try again', 'Hello... ');
-            return redirect()->back();
-        }catch (\QueryException $ex) {
-            toastr()->error($ex, 'Hello... ');
-            return redirect()->back();
+        }else {
+            toastr()->error('Password donot match', 'Attention.. ');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -110,15 +109,23 @@ class UserController extends Controller
     public function fundTransfer(Request $request) {
         $user = $this->userModel->findById($request->id);
         $valid = $this->validateInput($request);
+        if($user->status != 'active') {
+            toastr()->warning('Account Disabled Please contact admin', 'Hello');
+            return redirect()->back()->with(['user' => $user]);
+        }
+
         if($valid) {
             $recipient = $this->userModel->findRecipient($request->recipient);
             if($recipient) {
                 $isTokenValid = $this->validateOTP($request);
-                if($isTokenValid->status) {
+                if($isTokenValid->status == true) {
                     $status = $this->accountBalanceModel->withdraw($request);
                     if($status) {
                         $this->accountBalanceModel->deposit($request, $recipient->id);
                         $this->createDeposit($request, $recipient->id);
+                        $request['recipient_id'] = $recipient->id;
+                        $request['recipient_name'] = $recipient->surname.' '.$recipient->othernames;
+                        $request['recipient_phone_number'] = $recipient->phone_number;
                         return $this->createDebit($request);
                     }
                     toastr()->error('Insufficient funds', 'Hello');
@@ -136,14 +143,14 @@ class UserController extends Controller
     //id is the id of the user to be credited
     public function createDeposit($request, $id) {
         $this->creditModel->create($request, $id);
-        toastr()->success('Transaction Successful', 'Attention..');
+        toastr()->success('Transaction Successful', 'Success..');
         return true;
     }
 
     public function createDebit($request) {
         $user = $this->userModel->findById($request->id);
         $this->debitModel->create($request);
-        toastr()->success('Transaction Successful', 'Attention..');
+        toastr()->success('Transaction Successful, Account will be credited within 48hrs', 'Success..');
         return redirect()->back()->with(['user' => $user]);
     }
 
@@ -160,13 +167,7 @@ class UserController extends Controller
     }
 
     public function validateOTP($request) {
-        $status = $this->userModel->validateToken($request->otp);
-        if($status->status){
-            return true;
-        }
-        else {
-            return $status;
-        }
+        return $this->userModel->validateToken($request->otp);
     }
 
     public function deleteuser(Request $request) {
