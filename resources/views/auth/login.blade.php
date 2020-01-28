@@ -21,7 +21,7 @@
     <body class="" >
         <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
             <div class="container aside-xl">
-                <a class="navbar-brand block" href="{{'/'}}">{{'Tymebrokers'}}</a>
+                <a class="navbar-brand block" href="{{'/'}}">{{'Tymebrokers.com'}}</a>
                 <section class="m-b-lg">
                     <header class="wrapper text-center">
                         <strong>Sign in to get started</strong>
@@ -54,7 +54,7 @@
         <footer id="footer">
             <div class="text-center padder">
                 <p>
-                    <small>copyright<br>{{date('Y')}}</small>
+                    <small>copyright {{date('Y')}}</small>
                 </p>
             </div>
         </footer>

@@ -22,6 +22,10 @@ class LoginController extends Controller
             }
             return redirect()->route('user.index');
         }
+        return view('auth.index');
+    }
+
+    public function loginPage(){
         return view('auth.login');
     }
 

@@ -19,6 +19,8 @@ Route::group(['prefix' => 'auth'], function() {
     Route::get('/login', 'LoginController@index')->name('auth.login.get');
     Route::post('/login', 'LoginController@login')->name('auth.login.post');
     Route::get('/logout', 'LoginController@logout')->name('auth.logout');
+    Route::get('/user/login', 'LoginController@loginPage')->name('auth.login.page');
+
 });
 
 Route::group(['prefix' => 'admin'], function() {
