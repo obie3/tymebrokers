@@ -240,7 +240,7 @@
         });
     </script>
     </body>
-    @toastr_css - toastr css lib.
-    @toastr_js - toastr js lib.
-    @toastr_render - for render toastr notification.
+    @toastr_css
+    @toastr_js
+    @toastr_render
 </html>
