@@ -22,9 +22,9 @@ active
                             {{csrf_field()}}
                             <div class="doc-buttons">
                                 @if($user->status == 'active')
-                                 <input type="submit" value="Disable" class="btn-danger btn btn-s-md btn-rounded"/>
+                                 <input type="submit" value="Disable Account" class="btn-danger btn btn-s-md btn-rounded"/>
                                 @else
-                                 <input type="submit" value="Enable" class="btn-success btn btn-s-md btn-rounded"/>
+                                 <input type="submit" value="Enable Account" class="btn-success btn btn-s-md btn-rounded"/>
                                 @endif
                                 <input type="hidden" name="id" value="{{$user->id}}"/>
                             </div>

@@ -15,7 +15,6 @@ class LoginController extends Controller
 
     public function index() {
         if(Sentinel::check()) {
-            toastr()->error('Invalid Username or Password', 'Attention..' );
             $userRole = Sentinel::getUser()->roles()->first()->slug;
             if($userRole === 'admin') {
                 return redirect()->route('admin.index');

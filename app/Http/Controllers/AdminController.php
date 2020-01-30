@@ -23,7 +23,7 @@ class AdminController extends Controller
         $this->userModel = $userContract;
         $this->accountBalanceModel = $accountBalanceContract;
         $this->creditModel = $depositContract;
-        $this->debitModel = $depositContract;
+        $this->debitModel = $debitContract;
 
     }
 

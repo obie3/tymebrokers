@@ -8,7 +8,7 @@ use Sentinel;
 
 class DebitController extends Controller
 {
-    protected $creditModel;
+    protected $debitModel;
     public function __construct(DebitContract $debitContract){
         $this->debitModel = $debitContract;
     }
