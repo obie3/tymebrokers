@@ -158,7 +158,7 @@
       padding-bottom: 25px;
       color: #000000;
       font-family: sans-serif;" class="paragraph">
-        Have a&nbsp;question? <a href="mailto:info@admin@tymebrokers.com" target="_blank" style="color: #127DB3; font-family: sans-serif; font-size: 17px; font-weight: 400; line-height: 160%;">info@e-tymebrokers.com</a>
+        Have a&nbsp;question? <a href="mailto:info@admin@tymebrokers.com" target="_blank" style="color: #127DB3; font-family: sans-serif; font-size: 17px; font-weight: 400; line-height: 160%;">info@tymebrokers.com</a>
     </td>
   </tr>
 
