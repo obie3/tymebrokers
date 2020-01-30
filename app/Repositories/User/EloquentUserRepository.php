@@ -25,7 +25,7 @@ class EloquentUserRepository implements UserContract{
             $user = Sentinel::registerAndActivate($credentials);
             $role = Sentinel::findRoleBySlug($role);
             $role->users()->attach($user);
-            $this->sendEmail($credentials);
+            $email_response = $this->sendEmail($credentials);
             if($role->name == 'user') {
                 $nUser = $user->toArray();
                 $nUser['request'] = $request;
@@ -80,11 +80,12 @@ class EloquentUserRepository implements UserContract{
     }
 
     public function generateToken() {
-        $email = Sentinel::getUser()->email;
+        $user = Sentinel::getUser();
         $otp = new Otp();
-        $status = $otp->generate($email, 4, 10);
+        $status = $otp->generate($user->email, 4, 10);
         if($status->status) {
-           return $this->sendOTP();
+            $user->token = $status->token;
+           return $this->sendOTP($user);
         }
     }
 
@@ -94,7 +95,7 @@ class EloquentUserRepository implements UserContract{
         return $otp->validate($email, $token);
     }
 
-    private function sendEmail() {
+    private function sendEmail($request) {
         try {
             $data = array(
                 'account_number' => $request['account_number'],
@@ -106,21 +107,22 @@ class EloquentUserRepository implements UserContract{
              Mail::send('emails.emailTemplate', $data,  function($message) use ($data) {
                 $message->from('hello@tymebrokers.com', "Admin");
                 $message->to($data['email']);
-                $message->subject("e-Thrift Account details");
+                $message->subject("Tymebrokers.com Account details");
             });
             return Mail::failures() ? false : true;
         }
         catch (\Exception $ex) {
+            \Log::info('errro sending email...'.$ex);
             return $ex;
         }
     }
 
-    private function sendOTP() {
+    private function sendOTP($user) {
         try {
             $data = array(
-                'email' => $request['email'],
-                'token' => $request['otp'],
-                'surname' => $request['surname']
+                'email' => $user->email,
+                'token' => $user->token,
+                'surname' => $user->surname
             );
              Mail::send('emails.emailtoken', $data,  function($message) use ($data) {
                 $message->from('hello@tymebrokers.com', "Admin");
@@ -130,6 +132,7 @@ class EloquentUserRepository implements UserContract{
             return Mail::failures() ? false : true;
         }
         catch (\Exception $ex) {
+            dd('erroror....'.$ex);
             return $ex;
         }
     }

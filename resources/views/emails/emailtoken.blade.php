@@ -89,7 +89,7 @@
       padding-top: 25px;
       color: #000000;
       font-family: sans-serif;" class="header">
-        Tymebrokers Account Details
+        Tymebrokers OTP Request
     </td>
   </tr>
 
@@ -100,7 +100,7 @@
       padding-top: 5px;
       color: #000000;
       font-family: sans-serif;" class="subheader">
-        {{ One Time Password }}
+        {{ 'One Time Password' }}
     </td>
   </tr>
 
@@ -133,7 +133,7 @@
           <strong>Token</strong> {{ $token }} <br />
         </p>
         <p>
-          Use the token above to complete the transaction.
+          Use the token above to complete the transaction, it will expire after 10mins.
         </p>
 
         <p>Cheers</p>
