@@ -15,7 +15,7 @@ class CreateOtpsTable extends Migration
     {
         Schema::create('otps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('identifier');
+            $table->string('identifier', 255);
             $table->string('token');
             $table->integer('validity');
             $table->integer('valid')->unsigned()->default(1);
