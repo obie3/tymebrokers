@@ -56,7 +56,7 @@
                 $percent  = 0;
             }
             else {
-                $percent = ($activeAccounts / $users) * 100;
+                $percent = ($disabledAccounts / $users) * 100;
             }
         ?>
             <div class="card">
