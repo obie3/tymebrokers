@@ -42,7 +42,7 @@ class UserController extends Controller
 
     public function getTransfer() {
         $status = Sentinel::getUser()->status;
-        if($status != 'active') {
+        if($status == 'active') {
             return view('user/transfer');
         }
         toastr()->info('Sorry your account has been disabled Please contact admin', 'Hello... ');
