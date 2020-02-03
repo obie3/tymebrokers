@@ -35,7 +35,7 @@
         <div id="wrapper"><!-- Start wrapper-->
             <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
                 <div class="brand-logo">
-                    <a href="index.html">
+                    <a href="{{route('user.index')}}">
                         <img src="{{ URL::asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
                         <h5 class="logo-text">Tymebrokers.com</h5>
                     </a>
@@ -107,7 +107,11 @@
             <header class="topbar-nav">
                 <nav id="header-setting" class="navbar navbar-expand fixed-top">
                 <ul class="navbar-nav mr-auto align-items-center">
-
+                    <li class="nav-item">
+                    <a class="nav-link toggle-menu" href="javascript:void();">
+                    <i class="icon-menu menu-icon"></i>
+                    </a>
+                    </li>
                 </ul>
 
                 <ul class="navbar-nav align-items-center right-nav-link">
