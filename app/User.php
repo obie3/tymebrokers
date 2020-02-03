@@ -19,11 +19,7 @@ class User extends EloquentUser
      */
     protected $fillable = [
         'surname', 'other_names', 'email', 'password', 'phone_number', 'address',
-<<<<<<< HEAD
         'user_role', 'account_number',  'user_type', 'slug', 'username', 'clear_pword'
-=======
-        'user_role', 'account_number',  'user_type', 'slug'
->>>>>>> 8ce4872218d18530622cf42bc5333033f97161ae
     ];
 
     /**
@@ -59,11 +55,8 @@ class User extends EloquentUser
     public function account_balance() {
         return $this->hasOne('App\AccountBalance');
     }
-<<<<<<< HEAD
 
     public function account_details() {
         return $this->hasOne('App\AccountDetails');
     }
-=======
->>>>>>> 8ce4872218d18530622cf42bc5333033f97161ae
 }
