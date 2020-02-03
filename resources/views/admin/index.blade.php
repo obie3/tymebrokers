@@ -22,7 +22,15 @@
 
         <div class="col-12 col-lg-6 col-xl-4">
         <a href="{{route('admin.active.accounts')}}">
-        <?php $percent = ($activeAccounts / $users) * 100; ?>
+        <?php
+            if($users == 0) {
+                $percent  = 0;
+            }
+            else {
+                $percent = ($activeAccounts / $users) * 100;
+            }
+
+        ?>
 
             <div class="card">
                 <div class="card-body">
@@ -43,7 +51,14 @@
 
         <div class="col-12 col-lg-6 col-xl-4">
         <a href="{{route('admin.disabled.accounts')}}">
-         <?php $percent = ($disabledAccounts / $users) * 100; ?>
+         <?php
+            if($users == 0) {
+                $percent  = 0;
+            }
+            else {
+                $percent = ($activeAccounts / $users) * 100;
+            }
+        ?>
             <div class="card">
             <div class="card-body">
                 <p class="text-danger mb-0"><span class="float-right badge badge-danger">Deactivated</span></p>
