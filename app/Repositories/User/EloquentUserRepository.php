@@ -156,6 +156,7 @@ class EloquentUserRepository implements UserContract{
             return Mail::failures() ? false : true;
         }
         catch (\Exception $ex) {
+            dd('erroror....'.$ex);
             return $ex;
         }
     }
