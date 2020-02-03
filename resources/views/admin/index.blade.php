@@ -1,8 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-
-
-
       <!--Start Dashboard Content-->
     <div class="row mt-3">
         <div class="col-12 col-lg-6 col-xl-4">

@@ -34,7 +34,6 @@ class EloquentUserRepository implements UserContract{
                 event(new UserCreated($nUser));
             }
             return $user;
-
         }
         catch(\Exception $ex) {
             return false;
