@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
-  <title>Dashtreme - Multipurpose Bootstrap4 Admin Template</title>
+  <title>Tymebrokers.com</title>
   <!--favicon-->
   <link rel="icon" href="{{ URL::asset('assets/images/favicon.ico')}}" type="image/x-icon">
   <link href="{{ URL::asset('assets/css/bootstrap.min.css')}}" rel="stylesheet"/>
@@ -31,7 +31,7 @@
 	    	<div class="card mb-0">
 	    	   <div class="bg-signin2"></div>
 	    		<div class="card-img-overlay rounded-left my-5">
-                 <h3 class="text-white">Welcome to </h3>
+                 <h4 class="text-white">Welcome</h4>
                  <h2 class="text-white">Tymebrokers.com</h2>
                  <p class="card-text text-white pt-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
              </div>
@@ -41,7 +41,7 @@
 	    		<div class="card-body">
 	    			<div class="card-content p-3">
 	    				<div class="text-center">
-					 		<img src="assets/images/logo-icon.png" alt="logo icon">
+					 		<img src="{{ URL::asset('assets/images/logo-icon.png')}}" alt="logo icon">
 					 	</div>
 					 <div class="card-title text-uppercase text-center py-3">Sign In</div>
 					   <form Method="POST" action="{{route('auth.login.post')}}">
@@ -66,13 +66,13 @@
 						  </div>
 						  <div class="form-row mr-0 ml-0">
 						  <div class="form-group col-6">
-							  <div class="icheck-material-primary">
+							  <div class="icheck-material-success">
 				               <input type="checkbox" id="user-checkbox" checked="" />
 				               <label for="user-checkbox">Remember me</label>
 							 </div>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Sign In</button>
+						<button type="submit" class="btn btn-success btn-block waves-effect waves-light">Sign In</button>
 						 <div class="text-center pt-3">
 						<hr>
 						</div>

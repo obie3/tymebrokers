@@ -79,13 +79,15 @@ class AdminController extends Controller
     }
 
     public function activeAccounts(){
+        $authUser = Sentinel::getUser();
         $activeTransfers = $this->userModel->findUserByAccountStatus('active');
-        return view('admin.active')->with(['users' => $activeTransfers]);
+        return view('admin.active')->with(['users' => $activeTransfers, 'profile' => $authUser]);
     }
 
     public function disabledAccounts() {
+        $authUser = Sentinel::getUser();
         $disabledTransfers = $this->userModel->findUserByAccountStatus('disabled');
-        return view('admin.disabled')->with(['users' => $disabledTransfers]);
+        return view('admin.disabled')->with(['users' => $disabledTransfers, 'profile' => $authUser]);
 
     }
 

@@ -21,37 +21,44 @@
 
 
         <div class="col-12 col-lg-6 col-xl-4">
-        <div class="card">
-        <div class="card-body">
-            <p class="text-success mb-0"><span class="float-right badge badge-success">Active</span></p>
-            <div class="">
-            <h4 class="mb-0 py-3 text-success">{{number_format($activeAccounts)}}</h4>
-            </div>
-            <div class="progress-wrapper">
-                <div class="progress" style="height:5px;">
-                <div class="progress-bar bg-success" style="width:80%"></div>
+        <a href="{{route('admin.active.accounts')}}">
+        <?php $percent = ($activeAccounts / $users) * 100; ?>
+
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-success mb-0"><span class="float-right badge badge-success">Active</span></p>
+                    <div class="">
+                    <h4 class="mb-0 py-3 text-success">{{number_format($activeAccounts)}}</h4>
+                    </div>
+                    <div class="progress-wrapper">
+                        <div class="progress" style="height:5px;">
+                        <div class="progress-bar bg-success" style="width:{{$percent}}%"></div>
+                        </div>
+                    </div>
+                    <p class="mb-0 mt-2 small-font">Total Active Accounts</p>
+                    </div>
                 </div>
             </div>
-            <p class="mb-0 mt-2 small-font">Total Active Accounts</p>
-            </div>
-        </div>
-        </div>
+        </a>
 
         <div class="col-12 col-lg-6 col-xl-4">
-        <div class="card">
-        <div class="card-body">
-            <p class="text-danger mb-0"><span class="float-right badge badge-danger">Deactivated</span></p>
-            <div class="">
-            <h4 class="mb-0 py-3 text-danger">{{number_format($disabledAccounts)}}</h4>
-            </div>
-            <div class="progress-wrapper">
-                <div class="progress" style="height:5px;">
-                <div class="progress-bar bg-danger" style="width:45%"></div>
+        <a href="{{route('admin.disabled.accounts')}}">
+         <?php $percent = ($disabledAccounts / $users) * 100; ?>
+            <div class="card">
+            <div class="card-body">
+                <p class="text-danger mb-0"><span class="float-right badge badge-danger">Deactivated</span></p>
+                <div class="">
+                <h4 class="mb-0 py-3 text-danger">{{number_format($disabledAccounts)}}</h4>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress" style="height:5px;">
+                    <div class="progress-bar bg-danger" style="width: {{$percent}}%"></div>
+                    </div>
+                </div>
+                <p class="mb-0 mt-2 small-font">Total Disabled Accounts</p>
                 </div>
             </div>
-            <p class="mb-0 mt-2 small-font">Total Disabled Accounts</p>
-            </div>
-        </div>
+            </a>
         </div>
 
     </div><!--End Row-->
@@ -93,7 +100,7 @@
                         <?php $i++; $cls = $user->status == 'active' ? 'bg-success' : 'bg-danger'?>
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$user->surname.' '.$user->other_names}}</td>
+                                <td><a href="{{ route('admin.edit', $user->id) }}">{{$user->surname.' '.$user->other_names}}</a></td>
                                 <td>{{$user->phone_number}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
