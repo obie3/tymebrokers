@@ -53,6 +53,8 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('transactions/debits', 'DebitController@userDebits')->name('user.debits');
     Route::post('profile/update', 'UserController@updateProfile')->name('user.profile.update');
     Route::get('funds/transfer', 'UserController@getTransfer')->name('user.transfer');
+    Route::get('/profile', 'UserController@profile')->name('user.profile');
+
 
 
 

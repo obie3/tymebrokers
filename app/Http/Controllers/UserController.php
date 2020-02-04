@@ -36,6 +36,11 @@ class UserController extends Controller
         return view('user/index')->with('user', $user);
     }
 
+    public function profile(){
+        $user = $this->userModel->findById(Sentinel::getUser()->id);
+        return view('user/profile')->with('user', $user);
+    }
+
     public function create(){
         return view('user/create');
     }
@@ -144,16 +149,16 @@ class UserController extends Controller
 
     public function fundTransfer(Request $request) {
         $user = Sentinel::getUser();
-        $valid = $this->validateInput($request);
+        $isvalidInput = $this->validateInput($request);
         if($user->status != 'active') {
             toastr()->warning('Account Disabled Please contact admin', 'Hello');
             return redirect()->back()->with(['user' => $user]);
         }
 
-        if($valid) {
-            $recipient = $this->accountDetailsModel->verifyRecipient($request);
+        if($isValidInput) {
+           // $recipient = $this->accountDetailsModel->verifyRecipient($request);
                 //$this->userModel->findRecipient($request->recipient);
-            if($recipient) {
+            //if($recipient) {
                 $isTokenValid = $this->validateOTP($request);
                 if($isTokenValid->status == true) {
                     $status = $this->accountBalanceModel->withdraw($request);
@@ -170,9 +175,9 @@ class UserController extends Controller
                 }
                 toastr()->error($isTokenValid->message, 'Hello');
                 return redirect()->back()->with(['user' => $user]);
-            }
-            toastr()->error('Recipent doesnt exist', 'Attention..');
-            return redirect()->back()->with(['user' => $user]);
+            // }
+            // toastr()->error('Recipent doesnt exist', 'Attention..');
+            // return redirect()->back()->with(['user' => $user]);
         }
         return redirect()->back()->with(['user' => $user]);
     }

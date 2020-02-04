@@ -47,7 +47,7 @@
                             <img class="mr-3 side-user-img" src="https://via.placeholder.com/110x110" alt="user avatar">
                         </div>
                         <div class="media-body">
-                            <h6 class="side-user-name">{{$profile->surname}}</h6>
+                            <h6 class="side-user-name">Welcome {{$profile->surname}}</h6>
                         </div>
                     </div>
                     <div id="user-dropdown" class="collapse">
@@ -64,7 +64,7 @@
                     </li>
                     <li>
                         <a href="{{route('user.index')}}" class="waves-effect">
-                        <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span><i class=""></i>
+                        <i class="zmdi zmdi-view-dashboard"></i> <span>Account Summary</span><i class=""></i>
                         </a>
                     </li>
 
@@ -72,6 +72,14 @@
                         <a href="{{route('user.change.password')}}" class="waves-effect">
                         <i class="zmdi zmdi-lock"></i>
                         <span>Authentication</span>
+                        <i class=""></i>
+                        </a>
+                    </li>
+
+                    <li class="@yield('profile')">
+                        <a href="{{route('user.profile')}}" class="waves-effect">
+                        <i class="zmdi zmdi-lock"></i>
+                        <span>Profile</span>
                         <i class=""></i>
                         </a>
                     </li>
