@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
       <!--Start Dashboard Content-->
+      <div class="row pt-2 pb-2">
+    <div class="col-sm-9">
+        <!-- <h4 class="page-title">Form Validation</h4> -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javaScript:void();">you re logged in as user</a></li>
+        </ol>
+    </div>
+ </div>
     <div class="row mt-3">
         <div class="col-12 col-lg-6 col-xl-4">
         <div class="card">
