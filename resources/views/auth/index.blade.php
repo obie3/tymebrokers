@@ -199,30 +199,10 @@
     <div class="top-bar top-bar-dark">
       <div class="container">
         <div class="left-top-bar left-top-bar-long">
-              <p class="hidden-xs" ><span class="lnr lnr-map-marker large-lnr"></span> 8th floor, 379 Hudson St, New York, NY 10018</p>
-               <p class="hidden-xs"><span class="lnr lnr-smartphone large-lnr"></span> 1-800-123-6879 </p>
-                <p class="hidden-xs"><span class="lnr lnr-envelope large-lnr"></span> contact@finance.com</p>
-                <div class="popover-container visible-xs">
-                    <button type="button" class="btn btn-popover popover-dark" data-container="body" data-toggle="popover" data-placement="bottom" title="0112-826-2789" data-content="contact@site.com">
-                        <span class="lnr lnr-phone-handset"></span>
-                      </button>
-                       <button type="button" class="btn btn-popover popover-dark" data-container="body" data-toggle="popover" data-placement="bottom" title="8th floor, 379 Hudson St" data-content="New York, NY 10018">
-                        <span class="lnr lnr-map-marker"></span>
-                      </button>
-                      <button type="button" class="btn btn-popover popover-dark" data-container="body" data-toggle="popover" data-placement="bottom" title="07:30 am – 06:00 pm" data-content="Every Day">
-                        <span class="lnr lnr lnr-clock"></span>
-                      </button>
-                </div>
+              <p class="hidden-xs" ><span class="lnr lnr-map-marke large-lnr"></span>Let's help you with your financials</p>
+
         </div> <!-- End left top bar -->
-        <div class="right-top-bar">
-            <ul class="social">
-                <li class="facebook"><a href=""><i class="fa fa-facebook"></i></a></li>
-                <li class="twitter"><a href=""><i class="fa fa-twitter"></i></a></li>
-                <li class="google-plus"><a href=""><i class="fa fa-google-plus"></i></a></li>
-                <li class="youtube"><a href=""><i class="fa fa-youtube-play"></i></a></li>
-                <li class="linkedin"><a href=""><i class="fa fa-linkedin"></i></a></li>
-            </ul>
-        </div><!-- End right top bar -->
+
       </div> <!-- End container -->
     </div> <!-- End top bar -->
 
@@ -234,65 +214,45 @@
             </div>
             <a href="index.html"><img src="{{ URL::asset('homeassets/images/Header/logo.png')}}" class="img-responsive" alt="Image"></a>
         </div>
-        <nav class="navi-desktop-site hidden-sm hidden-xs">
-                 	<ul class="navi-level-1 uppercase">
-                        <li class="has-sub"><a href="index.html">Home <i class="fa fa-angle-down"></i></a>
-                             <ul class="navi-level-2 ">
-                                <li><a href="index.html">Home Page Verison 1</a></li>
-                                <li><a href="home_2.html">Home Page Verison 2</a></li>
-                                <li><a href="home_3.html">Home Page Verison 3</a></li>
-                                <li><a href="home_4.html">Home Page Verison 4</a></li>
-                                <li><a href="home_5.html">Home Page Verison 5</a></li>
-<li><a href="home_6.html">Home Page Verison 6</a></li>
+        <div class="navi-right navi-right-v1">
+                            <ul>
+                                  <li class="hidden-sm">
+                                      <span class="has-icon">
+                                          <span class="lnr lnr-phone-handset icon-set-1 icon-xs "></span>
+                                          <span class="sub-text-icon text-top">
+                                              <strong>0112-826-2789</strong>
+                                              call us
+                                          </span>
+                                      </span>
+                                  </li>
+                                 <li class="hidden-sm">
+                                      <span class="has-icon">
+                                          <span class="lnr lnr-map-marker icon-set-1 icon-xs "></span>
+                                          <span class="sub-text-icon text-top">
+                                        <strong>info@tymebrokers.com</strong>
+                                            send us a mail
+                                     </span>
+                                      </span>
+                                  </li>
+                                   <!-- <li class="hidden-sm">
+                                      <span class="has-icon">
+                                          <span class="lnr lnr-clock icon-set-1 icon-xs "></span>
+                                          <span class="sub-text-icon text-top">
+                                        <strong>07:30 am – 06:00 pm</strong>
+                                        Every Day
+                                     </span>
+                                      </span>
+                                  </li> -->
+                                  <li>
+                                      <a href="{{route('auth.login.page')}}" class="ot-btn btn-rounded large-btn btn-hightlight-color">Login</a>
+                                  </li>
                             </ul>
-                        </li>
-                        <li class="has-sub"><a href="servicesList.html">Services <i class="fa fa-angle-down"></i></a>
-                            <ul class="navi-level-2">
-                                <li><a href="servicesList.html">Services Style 1</a></li>
-                                <li><a href="servicesList2.html">Services Style 2</a></li>
-                                <li><a href="services-detail.html">Services Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-sub"><a href="projectList.html">Projects  <i class="fa fa-angle-down"></i></a>
-                               <ul class="navi-level-2">
-                                    <li><a href="projectList.html">Project Grid</a></li>
-                                    <li><a href="projectsDetail.html">Project Details</a></li>
-                                </ul>
-                        </li>
-                        <li class="has-sub"><a href="blogList.html">News<i class="fa fa-angle-down"></i></a>
-                             <ul class="navi-level-2">
-                                <li><a href="blogList.html">Blog List</a></li>
-                                <li><a href="blogDetail.html">Blog Detail</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-sub"><a href="shop-catalog.html">Shop<i class="fa fa-angle-down"></i></a>
-                              <ul class="navi-level-2">
-                                  <li><a href="shop-catalog.html">Online Store Catalog</a></li>
-                                  <li><a href="shop-cart.html">Online Store Shopping Cart</a></li>
-                                  <li><a href="shop-checkout.html">Online Store Checkout</a></li>
-                                  <li><a href="shop-single.html">Single Store Product</a></li>
-                              </ul>
-                        </li>
-                        <li class="has-sub"><a href="">Pages  <i class="fa fa-angle-down"></i></a>
-
-                          <ul class="navi-level-2">
-                              <li><a href="elements.html">Element</a></li>
-                              <li><a href="typography.html">Typography</a></li>
-                              <li><a href="testimonial.html">Testinmonials</a>
-                              <li><a href="404.html">404 Page</a></li>
-                              <li><a href="comingsoon.html">Coming Soon</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="about.html">About Us  </a></li>
-                        <li class="has-sub"><a href="contact.html">Contact Us  <i class="fa fa-angle-down"></i></a>
-                          <ul class="navi-level-2">
-                              <li><a href="contact.html">Contact Style 1</a></li>
-                              <li><a href="contact2.html">Contact Style 2</a></li>
-                              <li><a href="contact3.html">Contact Style 3</a></li>
-                          </ul>
-                        </li>
-                  	</ul>
-        </nav>
+                          </div> <!-- End Navi right -->
+        <!-- <nav class="navi-desktop-site hidden-sm hidden-xs">
+            <ul class="navi-level-1 uppercase">
+            <li><a href="{{route('home')}}">Home</a></li>
+            <ul>
+        </nav> -->
       </div> <!-- End container -->
     </header><!-- END HEADER -->
 

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'LoginController@index');
+Route::get('/', 'LoginController@index')->name('home');
 
 Route::group(['prefix' => 'auth'], function() {
     Route::get('/register', 'RegisterController@register')->name('auth.register.get');
