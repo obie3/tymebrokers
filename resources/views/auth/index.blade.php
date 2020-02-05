@@ -432,7 +432,7 @@
                       <span class="label-counter">Amazing Staff</span>
                     </li>
                     <li>
-                      <p><span class="couterup" id="hc"></span><span class="unit">K</span></p>
+                      <p><span class="couterup" id="hc"></span><span class="unit">+</span></p>
                       <span class="label-counter"> Over Happy Customers</span>
                     </li>
                     <li>
