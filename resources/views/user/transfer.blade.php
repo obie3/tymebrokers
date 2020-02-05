@@ -15,7 +15,7 @@
         <form id="otpform" action="javascript:void(0)" method="POST">
                 {{csrf_field()}}
             <div class="doc-buttons">
-                <button type="submit" id="otpBtn" class="btn btn-sm btn-success">Request OTP</button>
+                <button type="submit" id="otpBtn" class="btn btn-sm btn-success">Request Transaction OTP</button>
             </div>
         </form>
      </div>
@@ -86,8 +86,8 @@
                     </div>
 
                     <div class="form-footer">
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-times"></i> CANCEL</button>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i>SUBMIT</button>
+                        <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> CANCEL</button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i>CONFIRM TRANSACTION</button>
 
                     </div>
                 </form>
