@@ -101,8 +101,10 @@
 
   <!-- Custom scripts -->
   <script src="{{ URL::asset('assets/js/app-script.js')}}"></script>
-     @jquery
+     <!-- @jquery -->
     @toastr_css
     @toastr_js
+    @toastr_render
+
 </body>
 </html>

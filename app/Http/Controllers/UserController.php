@@ -162,16 +162,16 @@ class UserController extends Controller
                 $isTokenValid = $this->validateOTP($request);
                 if($isTokenValid->status == true) {
                     $status = $this->accountBalanceModel->withdraw($request);
-                    if($status) {
+                    // if($status) {
                         $this->accountBalanceModel->deposit($request, $recipient->id);
                         $this->createDeposit($request, $recipient->id);
                         $request['recipient_id'] = $recipient->id;
                         $request['recipient_name'] = $recipient->surname.' '.$recipient->othernames;
                         $request['recipient_phone_number'] = $recipient->phone_number;
                         return $this->createDebit($request);
-                    }
-                    toastr()->error('Insufficient funds', 'Hello');
-                    return redirect()->back()->with(['user' => $user]);
+                    // }
+                    // toastr()->error('Insufficient funds', 'Hello');
+                    // return redirect()->back()->with(['user' => $user]);
                 }
                 toastr()->error($isTokenValid->message, 'Hello');
                 return redirect()->back()->with(['user' => $user]);
