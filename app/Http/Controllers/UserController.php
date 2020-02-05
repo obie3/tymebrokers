@@ -149,7 +149,7 @@ class UserController extends Controller
 
     public function fundTransfer(Request $request) {
         $user = Sentinel::getUser();
-        $isvalidInput = $this->validateInput($request);
+        $isValidInput = $this->validateInput($request);
         if($user->status != 'active') {
             toastr()->warning('Account Disabled Please contact admin', 'Hello');
             return redirect()->back()->with(['user' => $user]);
