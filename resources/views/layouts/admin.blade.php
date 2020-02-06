@@ -18,6 +18,8 @@
         <link href="{{ URL::asset('assets/css/app-style.css')}}" rel="stylesheet"/>
         <link href="{{ URL::asset('assets/css/skins.css')}}" rel="stylesheet"/>
         <link href="{{ URL::asset('assets/plugins/jquery.steps/css/jquery.steps.css')}}" rel="stylesheet"/>
+        <link href="{{ URL::asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
+
         <link rel="stylesheet" href="{{ URL::asset('assets/plugins/notifications/css/lobibox.min.css')}}"/>
         <link href="{{ URL::asset('assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{ URL::asset('assets/plugins/bootstrap-datatable/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css">
@@ -195,11 +197,16 @@
         <script src="{{ URL::asset('assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js')}}"></script>
         <script src="{{ URL::asset('assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js')}}"></script>
         <script src="{{ URL::asset('assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js')}}"></script>
-
+        <script src="{{ URL::asset('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 
         <script>
             $(document).ready(function() {
                 $('#default-datatable').DataTable();
+            });
+
+            $('#autoclose-datepicker').datepicker({
+                autoclose: true,
+                todayHighlight: true
             });
 
             $(function() {
@@ -207,6 +214,34 @@
             });
             $().ready(function() {
                 $("#change-password").validate();
+                $("#update-transaction").validate({
+                    rules: {
+                        'depositor_name': {
+                            required: true,
+                            minlength: 3
+                        },
+                        'narration': {
+                            required: true,
+                            minlength: 10
+                        },
+                        'date_created': {
+                            required: true,
+                        }
+                    },
+                    messages: {
+                        depositor_name: {
+                            required: "This field is required",
+                            minlength: "Name must consistt of 3 Characters or more"
+                        },
+                        narration: {
+                            required: "This field is required",
+                            minlength: "Narration is too short"
+                        },
+                        date_created: {
+                            required: "This field is required",
+                        },
+                    }
+                });
                 // validate signup form on keyup and submit
                 $("#signupForm").validate({
                     rules: {

@@ -116,7 +116,7 @@
                             <hr>
                             <p>Current Balance</p>
                             <h5>
-                                {{number_format($user->account_balance->account_balance, 2)}} NGN
+                                {{number_format($user->account_balance->account_balance, 2)}} $
                             </h5>
                         </div>
                         <!-- <div class="col-md-12">
@@ -168,6 +168,18 @@
                                 <input type="text" class="form-control" id="input-10" name="amount">
                                 <input type="hidden" class="form-control" id="input-10" value="{{$user->id}}" name="user_id">
                                 <input type="hidden" name="type"  value="{{'Deposit'}}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="input-10" class="col-sm-2 col-form-label">Sender Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="input-10" name="depositor_name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="input-10" class="col-sm-2 col-form-label">Narration</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="narration" name="narration">
                             </div>
                         </div>
                         <div class="form-footer">

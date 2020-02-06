@@ -13,7 +13,7 @@
         <div class="col-12 col-lg-6 col-xl-4">
         <div class="card">
         <div class="card-body">
-            <p class="mb-0 "><span class="float-right badge badge-primary">NGN</span></p>
+            <p class="mb-0 "><span class="float-right badge badge-primary">$</span></p>
             <div class="">
             <h4 class="mb-0 py-3 text-primary">{{number_format($user->account_balance->account_balance)}}</h4>
             </div>

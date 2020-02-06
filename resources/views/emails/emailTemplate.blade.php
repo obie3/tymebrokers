@@ -144,7 +144,7 @@
           <strong>Unique Id:</strong> {{ $account_number }} <br />
         </p>
         <p>
-          <strong>Current Balance:</strong> {{ '0.0 NGN' }} <br />
+          <strong>Current Balance:</strong> {{ '0.0 $' }} <br />
         </p>
         <p>
           Use the above credentials to log into the portal

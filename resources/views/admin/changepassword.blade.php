@@ -17,7 +17,7 @@
             <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                <form id="change-password" method="post">
+                <form id="change-password" action="{{route('admin.update.password')}}" method="post">
                 {{csrf_field()}}
                     <h4 class="form-header text-uppercase">
                     <i class="fa fa-user-circle-o"></i>

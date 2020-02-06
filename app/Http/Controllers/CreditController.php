@@ -21,7 +21,20 @@ class CreditController extends Controller
 
     public function userCredits() {
         $user = Sentinel::getUser()->id;
-        $credits = $this->creditModel->findById($user);
+        $credits = $this->creditModel->findByUserId($user);
         return view('user.credits')->with(['credits' => $credits]);
+    }
+
+    public function editCreditDetails($id){
+        $user = Sentinel::getUser();
+        $transaction =  $this->creditModel->findById($id);
+        return view('admin.modify')->with(['credit' => $transaction, 'profile' => $transaction]);
+    }
+
+    public function updateTransaction(Request $request){
+        $this->creditModel->updateTransaction($request);
+        toastr()->success('Update Successful', 'Success..' );
+        return redirect()->route('admin.credits');
+
     }
 }

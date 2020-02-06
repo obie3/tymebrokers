@@ -34,7 +34,11 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('password/update', 'AdminController@changePassword')->name('admin.change.password');
     Route::post('password/update', 'AdminController@updatePassword')->name('admin.update.password');
     Route::get('transactions/credit', 'CreditController@credits')->name('admin.credits');
+    Route::get('transactions/edit/{id}', 'CreditController@editCreditDetails')->name('credits.edit');
+    Route::post('transactions/modify', 'CreditController@updateTransaction')->name('credits.modify');
+
     Route::get('transactions/debit', 'DebitController@debits')->name('admin.debits');
+    // Route::get('transactions/debit/details', 'DebitController@debits')->name('admin.debits');
     Route::get('manage/active/accounts', 'AdminController@activeAccounts')->name('admin.active.accounts');
     Route::get('manage/disabled/accounts', 'AdminController@disabledAccounts')->name('admin.disabled.accounts');
 
@@ -54,9 +58,4 @@ Route::group(['prefix' => 'user'], function() {
     Route::post('profile/update', 'UserController@updateProfile')->name('user.profile.update');
     Route::get('funds/transfer', 'UserController@getTransfer')->name('user.transfer');
     Route::get('/profile', 'UserController@profile')->name('user.profile');
-
-
-
-
-
 });

@@ -151,7 +151,7 @@ class UserController extends Controller
         $user = Sentinel::getUser();
         $isValidInput = $this->validateInput($request);
         if($user->status != 'active') {
-            toastr()->warning('Account Disabled Please contact admin', 'Hello');
+            toastr()->warning('INRC is required to proceed', 'Hello..');
             return redirect()->back()->with(['user' => $user]);
         }
 
