@@ -168,7 +168,7 @@
                             <hr>
                             <p>Current Balance</p>
                             <h5>
-                                {{number_format($user->account_balance->account_balance, 2)}} $
+                                {{number_format($user->account_balance->account_balance, 2)}} USD
                             </h5>
                         </div>
                         <!-- <div class="col-md-12">
