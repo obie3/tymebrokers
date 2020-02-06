@@ -48,7 +48,7 @@
                     </div>
                 </form>
                 </div>
-            </div>9
+            </div>
             </div>
         </div><!--End Row-->
 @endsection
