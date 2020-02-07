@@ -18,7 +18,7 @@ class EloquentDepositRepository implements DepositContract{
     }
 
     public function findByUserId($userId) {
-        return Credit::where('user_id', $id)->get();
+        return Credit::where('user_id', $userId)->get();
     }
 
     public function findById($id) {
