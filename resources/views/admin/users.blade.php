@@ -25,7 +25,7 @@
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Email</th>
-                        <th>AccountBalance</th>
+                        <th>Balance($)</th>
                         <th>Status</th>
                         <th>Created</th>
 
