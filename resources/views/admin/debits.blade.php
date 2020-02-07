@@ -40,7 +40,7 @@
                              <td>{{$debit->depositor_name}}</td>
                             <td>{{number_format($debit->amount, 2)}}</td>
                             <td>{{$debit->user->surname.' '.$debit->user->other_names}}</td>
-                            <td>{{$debit->created_at}}</td>
+                            <td>{{Carbon\Carbon::createFromIsoFormat('YYYY-m-D H:mm:ss', $debit->created_at)->format('m/d/Y')}}</td>
                         </tr>
                     @endforeach
                 </tbody>

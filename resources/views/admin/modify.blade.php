@@ -39,7 +39,7 @@
                     <div class="form-group row">
                         <label for="input-1" class="col-sm-2 col-form-label">Date Created</label>
                         <div class="col-sm-10">
-                             <input type="text" id="autoclose-datepicker"  name="date_created"  value="{{$credit->created_at}}" class="form-control">
+                             <input type="text" id="autoclose-datepicker"  name="date_created"  value="{{Carbon\Carbon::createFromIsoFormat('YYYY-m-D H:mm:ss', $credit->created_at)->format('m/d/Y')}}" class="form-control">
                         <div class="col-sm-10">
                     </div>
                     <div class="form-footer">

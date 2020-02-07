@@ -26,7 +26,7 @@
                         <th>Transation ID</th>
                         <th>Sender</th>
                         <th>Amount</th>
-                        <!-- <th>Recipient</th> -->
+                        <th>Narration</th>
                         <th>Date</th>
 
                     </tr>
@@ -39,7 +39,7 @@
                              <td>{{$credit->transaction_id}}</td>
                              <td>{{$credit->depositor_name}}</td>
                             <td>{{number_format($credit->amount, 2)}}</td>
-                            <!-- <td>{{$credit->user->surname.' '.$credit->user->other_names}}</td> -->
+                            <td>{{$credit->narration}}</td>
                             <td>{{$credit->created_at}}</td>
                         </tr>
                     @endforeach
