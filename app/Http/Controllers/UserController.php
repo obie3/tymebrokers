@@ -50,7 +50,7 @@ class UserController extends Controller
         if($status == 'active') {
             return view('user/transfer');
         }
-        toastr()->info('Sorry your account has been disabled Please contact admin', 'Hello... ');
+        toastr()->info('INRC is required to proceed', 'Attention... ');
         return redirect()->back();
     }
 
