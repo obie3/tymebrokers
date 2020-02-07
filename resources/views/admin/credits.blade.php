@@ -40,7 +40,7 @@
                              <td>{{$credit->depositor_name}}</td>
                             <td>{{number_format($credit->amount, 2)}}</td>
                             <td>{{$credit->user->surname.' '.$credit->user->other_names}}</td>
-                            <td>{{Carbon\Carbon::createFromIsoFormat('YYYY-m-D H:mm:ss', $credit->created_at)->format('m/d/Y')}}</td>
+                            <td>{{Carbon\Carbon::createFromIsoFormat('YYYY-m-D H:mm:ss', $credit->created_at)->format('m/d/Y H:m:s')}}</td>
                         </tr>
                     @endforeach
                 </tbody>
