@@ -25,7 +25,7 @@
                         <th>S/N</th>
                         <th>Transation ID</th>
                         <th>Sender</th>
-                        <th>Amount(USD)</th>
+                        <th>Amount($)</th>
                         <th>Narration</th>
                         <th>Date</th>
 
