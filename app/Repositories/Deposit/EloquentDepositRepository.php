@@ -48,7 +48,7 @@ class EloquentDepositRepository implements DepositContract{
         $credit->user_id = $request->account_id; //id of the user to be credited
         $credit->depositor_id = $user->id;
         $credit->transaction_id = $request->transaction_id;
-        $credit->depositor_name = isset($request->depositor_name) ? $reuest->depositor_name : $sender_name;
+        $credit->depositor_name = isset($request->depositor_name) ? $request->depositor_name : $sender_name;
         $credit->depositor_phone_number = $user->phone_number;
     }
 }
