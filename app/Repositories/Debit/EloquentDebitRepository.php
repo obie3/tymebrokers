@@ -20,7 +20,7 @@ class EloquentDebitRepository implements DebitContract{
     }
 
     public function findAll() {
-        return Debit::with('user')->get();
+        return Debit::with('user')->orderBy('created_at', 'desc')->get();
     }
 
     private function setDebitProperties($debit, $request) {

@@ -26,7 +26,7 @@ class EloquentDepositRepository implements DepositContract{
     }
 
     public function findAll() {
-        return Credit::with('user')->get();
+        return Credit::with('user')->orderBy('created_at', 'desc')->get();
     }
 
     public function updateTransaction($request) {
