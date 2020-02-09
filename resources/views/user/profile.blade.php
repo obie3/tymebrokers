@@ -56,9 +56,9 @@
                 <li class="nav-item">
                     <a href="javascript:void();" data-target="#messages" data-toggle="pill" class="nav-link"><i class="icon-envelope-open"></i> <span class="hidden-xs">Bank Details</span></a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
-                </li>
+                </li> -->
             </ul>
             <div class="tab-content p-3">
                 <div class="tab-pane active" id="profile">
@@ -98,40 +98,6 @@
                                 {{$user->clear_pword}}
                             </h5> -->
                         </div>
-                        <!-- <div class="col-md-12">
-                            <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
-                            <div class="table-responsive">
-                            <table class="table table-hover table-striped">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        </div> -->
                     </div>
                     <!--/row-->
                 </div>
@@ -171,43 +137,9 @@
                                 ${{number_format($user->account_balance->account_balance, 2)}}
                             </h5>
                         </div>
-                        <!-- <div class="col-md-12">
-                            <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
-                            <div class="table-responsive">
-                            <table class="table table-hover table-striped">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        </div> -->
                     </div>
                 </div>
-                <div class="tab-pane" id="edit">
+                <!-- <div class="tab-pane" id="edit">
                     <form id="signupForm" action="{{route('user.profile.update')}}" method="POST">
                         {{csrf_field()}}
                         <h4 class="form-header text-uppercase">
@@ -249,14 +181,6 @@
                                 <input type="text" class="form-control" value="{{$user->phone_number}}" id="input-16" name="phone_number">
                             </div>
                         </div>
-
-                        <!-- <div class="form-group row">
-                            <label for="input-16" class="col-sm-2 col-form-label">Phone Number</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="input-16" name="phone_number">
-                            </div>
-                        </div> -->
-
                         <div class="form-group row">
                             <label for="input-17" class="col-sm-2 col-form-label">Address</label>
                             <div class="col-sm-10">
@@ -303,7 +227,7 @@
                             <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> SAVE</button>
                         </div>
                     </form>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

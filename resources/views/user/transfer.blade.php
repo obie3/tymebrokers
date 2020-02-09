@@ -77,7 +77,7 @@
                     </div>
                     </div>
                     <div class="form-group row">
-                    <label for="input-2" class="col-sm-2 col-form-label">One TIme Password</label>
+                    <label for="input-2" class="col-sm-2 col-form-label">One Time Password</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" value="{{old('otp')}}" id="otp" name="otp" required>
                          <input type="hidden" name="type" value="{{'transfer'}}" class="form-control">

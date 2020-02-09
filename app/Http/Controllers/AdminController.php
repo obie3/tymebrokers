@@ -99,7 +99,18 @@ class AdminController extends Controller
 
 
     public function update(Request $request) {
-
+        try {
+            $user = $this->userModel->updateUserProfile($request);
+            if ($user) {
+                toastr()->success('Profile Update Successful', 'Hello... ');
+                return redirect()->back();
+            }
+            toastr()->error('Oops error encountered please try again', 'Hello... ');
+            return redirect()->back();
+        }catch (\Exception $ex) {
+            toastr()->error('Oops something went wrong..', 'Attention... ');
+            return redirect()->back();
+        }
     }
 
     public function changePassword() {

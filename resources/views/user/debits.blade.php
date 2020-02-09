@@ -6,7 +6,7 @@
     <div class="col-sm-9">
         <!-- <h4 class="page-title">Form Validation</h4> -->
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javaScript:void();">Admin</a></li>
+            <li class="breadcrumb-item"><a href="javaScript:void();">User</a></li>
             <li class="breadcrumb-item"><a href="javaScript:void();">Transactions</a></li>
             <li class="breadcrumb-item active" aria-current="page">Debits</li>
         </ol>
@@ -39,7 +39,7 @@
                              <td>{{$debit->transaction_id}}</td>
                              <!-- <td>{{$debit->depositor_name}}</td> -->
                             <td>{{number_format($debit->amount, 2)}}</td>
-                            <td>{{$debit->user->surname.' '.$debit->user->other_names}}</td>
+                            <td>{{$debit->recipient_name}}</td>
                             <td>{{$debit->created_at}}</td>
                         </tr>
                     @endforeach

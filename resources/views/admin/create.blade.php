@@ -73,7 +73,7 @@
                             </div>
                         </div>
 
-                        <!-- <h4 class="form-header text-uppercase">
+                        <h4 class="form-header text-uppercase">
                             <i class="fa fa-envelope-o"></i>
                             Bank Details
                         </h4>
@@ -81,7 +81,7 @@
                         <div class="form-group row">
                             <label for="input-18" class="col-sm-2 col-form-label">Bank Name</label>
                             <div class="col-sm-4">
-                                <input type="email" class="form-control" id="input-18" name="bank_name">
+                                <input type="text" class="form-control" id="input-18" name="bank_name">
                             </div>
                             <label for="input-19" class="col-sm-2 col-form-label">Account Name</label>
                             <div class="col-sm-4">
@@ -106,7 +106,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="input-22" name="routing_number">
                             </div>
-                        </div> -->
+                        </div>
                         <div class="form-footer">
                             <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> CANCEL</button>
                             <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> SAVE</button>

@@ -36,6 +36,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('transactions/credit', 'CreditController@credits')->name('admin.credits');
     Route::get('transactions/edit/{id}', 'CreditController@editCreditDetails')->name('credits.edit');
     Route::post('transactions/modify', 'CreditController@updateTransaction')->name('credits.modify');
+    Route::post('profile/update', 'AdminController@update')->name('admin.profile.update');
 
     Route::get('transactions/debit', 'DebitController@debits')->name('admin.debits');
     // Route::get('transactions/debit/details', 'DebitController@debits')->name('admin.debits');
@@ -55,7 +56,7 @@ Route::group(['prefix' => 'user'], function() {
     Route::post('transfer/', 'UserController@fundTransfer')->name('user.funds.transfer');
     Route::get('transactions/credits', 'CreditController@userCredits')->name('user.credits');
     Route::get('transactions/debits', 'DebitController@userDebits')->name('user.debits');
-    Route::post('profile/update', 'UserController@updateProfile')->name('user.profile.update');
+    Route::post('profile/update', 'UserController@update')->name('user.profile.update');
     Route::get('funds/transfer', 'UserController@getTransfer')->name('user.transfer');
     Route::get('/profile', 'UserController@profile')->name('user.profile');
 });

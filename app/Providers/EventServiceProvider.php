@@ -17,6 +17,8 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\UserCreated' => [
             'App\Listeners\CreateAccountBalanceForUser',
+            'App\Listeners\CreateAccountDetails',
+
         ],
         'App\Events\TransactionCreated' => [
             'App\Listeners\CreateDepositTransaction',

@@ -11,7 +11,8 @@ use App\Events\TransactionCreated;
 
 class EloquentAccountDetailsRepository implements AccountDetailsContract{
     public function create($request) {
-        $user = Sentinel::getUser()->id;
+        //$user = Sentinel::getUser()->id;
+        $user = $request->user_id;
         $exist = $this->findById($user);
         $accountDetails = $exist ? $exist : new AccountDetails;
         $this->setAccountDetailsProperties($accountDetails, $request);

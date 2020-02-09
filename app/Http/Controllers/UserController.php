@@ -32,12 +32,16 @@ class UserController extends Controller
     }
 
     public function index(){
-        $user = $this->userModel->findById(Sentinel::getUser()->id);
+        $user = $this->currentUser();
         return view('user/index')->with('user', $user);
     }
 
+    public function currentUser() {
+        return $this->userModel->findById(Sentinel::getUser()->id);
+    }
+
     public function profile(){
-        $user = $this->userModel->findById(Sentinel::getUser()->id);
+        $user = $this->currentUser();
         return view('user/profile')->with('user', $user);
     }
 
@@ -72,6 +76,18 @@ class UserController extends Controller
     }
 
     public function update(Request $request) {
+        try {
+            $user = $this->userModel->updateUserProfile($request);
+            if ($user) {
+                toastr()->success('Profile Update Successful', 'Hello... ');
+                return redirect()->back();
+            }
+            toastr()->error('Oops error encountered please try again', 'Hello... ');
+            return redirect()->back();
+        }catch (\Exception $ex) {
+            toastr()->error($ex, 'Attention... ');
+            return redirect()->back();
+        }
     }
 
     public function changePassword() {
@@ -102,27 +118,6 @@ class UserController extends Controller
         }
     }
 
-    public function updateProfile(Request $request) {
-        $this->validate($request, [
-            //'email' => 'required|email|unique:users',
-            //'phone_number' => 'required|numeric|unique:users',
-        ]);
-
-        try {
-            $user = $this->userModel->updateUserProfile($request);
-            if ($user) {
-                toastr()->success('Profile Update Successful', 'Hello... ');
-                return redirect()->back();
-            }
-            toastr()->error('Oops error encountered please try again', 'Hello... ');
-            return redirect()->back();
-        }catch (\Exception $ex) {
-            toastr()->error($ex, 'Attention... ');
-            return redirect()->back();
-        }
-
-    }
-
     public function requestOtp() {
         $status = $this->userModel->generateToken();
         if($status) {
@@ -148,7 +143,7 @@ class UserController extends Controller
     }
 
     public function fundTransfer(Request $request) {
-        $user = Sentinel::getUser();
+        $user = $this->currentUser();
         $isValidInput = $this->validateInput($request);
         if($user->status != 'active') {
             toastr()->warning('INRC is required to proceed', 'Hello..');
@@ -156,18 +151,20 @@ class UserController extends Controller
         }
 
         if($isValidInput) {
-           // $recipient = $this->accountDetailsModel->verifyRecipient($request);
+            $recipient = $this->accountDetailsModel->verifyRecipient($request);
                 //$this->userModel->findRecipient($request->recipient);
             //if($recipient) {
                 $isTokenValid = $this->validateOTP($request);
                 if($isTokenValid->status == true) {
                     $status = $this->accountBalanceModel->withdraw($request);
                     // if($status) {
-                        $this->accountBalanceModel->deposit($request, $recipient->id);
-                        $this->createDeposit($request, $recipient->id);
-                        $request['recipient_id'] = $recipient->id;
-                        $request['recipient_name'] = $recipient->surname.' '.$recipient->othernames;
-                        $request['recipient_phone_number'] = $recipient->phone_number;
+                        $recipient_id = $recipient ? $recipient->id : 1;
+                        $this->accountBalanceModel->deposit($request, $recipient_id);
+                        $this->createDeposit($request, $recipient_id);
+                        $request['recipient_id'] = $recipient_id;
+                        $request['recipient_name'] = $recipient ? $recipient->surname.' '.$recipient->othernames : $request->beneficiary_name;
+                        $request['recipient_phone_number'] = $recipient ? $recipient->phone_number : '08000000000';
+                        $request['id'] = $user->id;
                         return $this->createDebit($request);
                     // }
                     // toastr()->error('Insufficient funds', 'Hello');
@@ -185,14 +182,14 @@ class UserController extends Controller
     //id is the id of the user to be credited
     public function createDeposit($request, $id) {
         $this->creditModel->create($request, $id);
-        toastr()->success('Transaction Successful', 'Success..');
+        toastr()->success('Transaction Successful, Account will be credited within 48hrs', 'Success..');
         return true;
     }
 
     public function createDebit($request) {
         $user = $this->userModel->findById($request->id);
         $this->debitModel->create($request);
-        toastr()->success('Transaction Successful, Account will be credited within 48hrs', 'Success..');
+        //toastr()->success('Transaction Successful, Account will be credited within 48hrs', 'Success..');
         return redirect()->back()->with(['user' => $user]);
     }
 

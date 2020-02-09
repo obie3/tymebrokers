@@ -16,7 +16,7 @@ class EloquentDebitRepository implements DebitContract{
     }
 
     public function findById($id) {
-        return Debit::where('user_id', $id)->get();
+        return Debit::where('user_id', $id)->orderBy('created_at', 'desc')->get();
     }
 
     public function findAll() {

@@ -349,7 +349,7 @@
                             $('#otpBtn').attr('disabled', 'disabled');
                         },
                         success:function(response){
-                            $('#otpBtn').html('Mail Sent');
+                            $('#otpBtn').html('Mail Sent with OTP');
                             $('#res_message').html(response.success);
                             $('#msg_div').show();
                             setTimeout(function(){

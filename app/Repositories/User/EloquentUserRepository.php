@@ -82,7 +82,8 @@ class EloquentUserRepository implements UserContract{
     }
 
     public function updateUserProfile($request) {
-        $user = Sentinel::getUser();
+       // $user = Sentinel::getUser();
+        $user = Sentinel::findById($request->id);
         $name_slug = preg_replace('/\s+/', '-', $request->surname. ' '. $request->other_names);
         $role = isset($request->user_type) ? 'admin' : 'user';
         $request->name_slug = $name_slug;
@@ -156,7 +157,6 @@ class EloquentUserRepository implements UserContract{
             return Mail::failures() ? false : true;
         }
         catch (\Exception $ex) {
-            dd('erroror....'.$ex);
             return $ex;
         }
     }
